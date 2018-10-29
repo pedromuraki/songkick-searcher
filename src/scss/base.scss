@@ -1,0 +1,121 @@
+/* normalize */
+@import 'node_modules/normalize.css/normalize';
+
+/* fonts */
+@import url('https://fonts.googleapis.com/css?family=Hind:400,700|Playfair+Display:400,700');
+
+@mixin hind {
+  font-family: 'Hind', sans-serif;
+  letter-spacing: 1px;
+  font-weight: 400;
+}
+
+@mixin hind-bold {
+  font-family: 'Hind', sans-serif;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+@mixin playfair {
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 1px;
+  font-weight: 400;
+}
+
+@mixin playfair-bold {
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+/* fluid size mixin */
+@mixin fluid-size($props, $min-size, $max-size) {
+  $min-range: 320;
+  $max-range: 1280;
+  $rangeDiff: $max-range - $min-range;
+  $sizeDiff: $max-size - $min-size;
+  @each $prop in $props {
+    #{$prop}: calc(#{$min-size}px + #{$sizeDiff} * ((100vw - #{$min-range}px) / #{$rangeDiff}));
+    @media (max-width: #{$min-range}px) {
+      #{$prop}: #{$min-size}px;
+    }
+    @media (min-width: #{$max-range}px) {
+      #{$prop}: #{$max-size}px;
+    }
+  }
+}
+
+@mixin custom-range-fluid-size($props, $min-range, $max-range, $min-size, $max-size, $size-after-min-range, $size-after-max-range) {
+  $rangeDiff: $max-range - $min-range;
+  $sizeDiff: $max-size - $min-size;
+  @each $prop in $props {
+    #{$prop}: calc(#{$min-size}px + #{$sizeDiff} * ((100vw - #{$min-range}px) / #{$rangeDiff}));
+    @media (max-width: #{$min-range}px) {
+      #{$prop}: #{$size-after-min-range}px;
+    }
+    @media (min-width: #{$max-range}px) {
+      #{$prop}: #{$size-after-max-range}px;
+    }
+  }
+}
+
+/* helpers */
+.italic {
+  font-style: italic !important;
+}
+
+.bold {
+  font-weight: 700 !important;
+}
+
+.uppercase {
+  text-transform: uppercase !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+/* color variables */
+$cream: #fefefe;
+$salmon: #ea9e60;
+
+/* global settings & resets */
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+ul,
+ol {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  outline: 0;
+  cursor: pointer;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
