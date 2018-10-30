@@ -11,7 +11,8 @@ import Footer from './Footer';
 const mapStateToProps = state => {
   return {
     searchResults: state.searchResults,
-    events: state.events
+    events: state.events,
+    eventDetails: state.eventDetails
   };
 };
 
@@ -21,10 +22,11 @@ class App extends Component {
       <div className="app-wrapper">
         {/* <Header /> */}
         <button type="button">New search</button>
+        <button type="button">Back</button>
         <Search />
         {this.props.searchResults ? <SearchResults /> : null}
         {this.props.events ? <Events /> : null}
-        <EventDetails />
+        {this.props.eventDetails ? <EventDetails /> : null}
         <Footer />
       </div>
     );
@@ -32,5 +34,3 @@ class App extends Component {
 }
 
 export default connect(mapStateToProps)(App);
-
-// export default App;

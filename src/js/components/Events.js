@@ -1,23 +1,29 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
+import { getEventDetails } from '../actions/getEventDetails';
+
 const mapStateToProps = state => {
   return {
     events: state.events
   };
 };
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     propName: param => {
-//       dispatch(propName(param));
-//     }
-//   };
-// };
+const mapDispatchToProps = dispatch => {
+  return {
+    getEventDetails: id => dispatch(getEventDetails(id))
+  };
+};
 
 class Events extends Component {
   constructor(props) {
     super(props);
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(id) {
+    this.props.getEventDetails(id);
   }
 
   render() {
@@ -28,12 +34,19 @@ class Events extends Component {
         <h1>{this.props.events.displayName}: Next events</h1>
         {events.map(event => {
           return (
-            <div className="item">
+            <div className="item" key={event.id}>
               <h2>{event.displayName}</h2>
               <p>{event.start.date}</p>
               <p>{event.location.city}</p>
               <p>{event.venue.displayName}</p>
-              <button type="button">More details</button>
+              <button
+                type="button"
+                onClick={() => {
+                  this.handleClick(event.id);
+                }}
+              >
+                More details
+              </button>
             </div>
           );
         })}
@@ -42,4 +55,7 @@ class Events extends Component {
   }
 }
 
-export default connect(mapStateToProps)(Events);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Events);
