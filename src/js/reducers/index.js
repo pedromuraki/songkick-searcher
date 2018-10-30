@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 
-import * as searchResults from './searchResultsReducer';
+import { searchResultsReducer } from './searchResultsReducer';
 // import * as currentTime from './currentTime';
 
 export const rootReducer = combineReducers({
-  searchResults: searchResults.searchResultsReducer
+  searchResults: searchResultsReducer
   // currentUser: currentUser.reducer,
 });
 

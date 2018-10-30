@@ -21,7 +21,7 @@ class SearchResults extends Component {
   }
 
   getResultsMarkup() {
-    const results = this.props.searchResults.searchResults.results;
+    const results = this.props.searchResults.results;
 
     if (results.artist) {
       return results.artist.map(artist => {

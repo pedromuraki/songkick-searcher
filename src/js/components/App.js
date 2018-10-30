@@ -21,7 +21,7 @@ class App extends Component {
         {/* <Header /> */}
         <button type="button">New search</button>
         <Search />
-        {this.props.searchResults.searchResults ? <SearchResults /> : null}
+        {this.props.searchResults ? <SearchResults /> : null}
         <Events />
         <EventDetails />
         <Footer />
