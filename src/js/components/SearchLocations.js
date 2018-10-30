@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import axios from 'axios';
 
+// import { changePage } from '../helpers/index';
+
 import { search } from '../actions/search';
 
 // const mapStateToProps = state => {
@@ -37,6 +39,7 @@ class SearchLocations extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    // changePage('/search-results');
     this.props.search('locations', this.state.inputValue);
   }
 

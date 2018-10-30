@@ -1,5 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { Route, Switch, withRouter } from 'react-router-dom';
+
+import { changePage, goBack } from '../helpers';
 
 // import Header from './Header';
 import Search from './Search';
@@ -21,16 +24,36 @@ class App extends Component {
     return (
       <div className="app-wrapper">
         {/* <Header /> */}
-        <button type="button">New search</button>
-        <button type="button">Back</button>
-        <Search />
-        {this.props.searchResults ? <SearchResults /> : null}
-        {this.props.events ? <Events /> : null}
-        {this.props.eventDetails ? <EventDetails /> : null}
+        <button
+          type="button"
+          onClick={() => {
+            changePage('/');
+          }}
+        >
+          New search
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            goBack();
+          }}
+        >
+          Back
+        </button>
+        <Switch>
+          {/* <Search /> */}
+          <Route exact path="/" component={Search} />
+          {/* {this.props.searchResults ? <SearchResults /> : null} */}
+          <Route exact path="/search-results" component={SearchResults} />
+          {/* {this.props.events ? <Events /> : null} */}
+          <Route exact path="/events" component={Events} />
+          {/* {this.props.eventDetails ? <EventDetails /> : null} */}
+          <Route exact path="/event-details" component={EventDetails} />
+        </Switch>
         <Footer />
       </div>
     );
   }
 }
 
-export default connect(mapStateToProps)(App);
+export default withRouter(connect(mapStateToProps)(App));

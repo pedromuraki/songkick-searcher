@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
+// import { changePage } from '../helpers/index';
+
 import { search } from '../actions/search';
 
 // const mapStateToProps = state => {
@@ -31,6 +33,7 @@ class SearchArtists extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    // changePage('/search-results');
     this.props.search('artists', this.state.inputValue);
   }
 

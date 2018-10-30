@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import { getEventDetails } from '../actions/getEventDetails';
 
+import uuidv1 from 'uuid/v1';
+
 const mapStateToProps = state => {
   return {
     events: state.events
@@ -34,7 +36,7 @@ class Events extends Component {
         <h1>{this.props.events.displayName}: Next events</h1>
         {events.map(event => {
           return (
-            <div className="item" key={event.id}>
+            <div className="item" key={uuidv1()}>
               <h2>{event.displayName}</h2>
               <p>{event.start.date}</p>
               <p>{event.location.city}</p>

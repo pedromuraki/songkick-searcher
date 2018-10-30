@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import { getEvents } from '../actions/getEvents';
 
+import uuidv1 from 'uuid/v1';
+
 const mapStateToProps = state => {
   return {
     searchResults: state.searchResults
@@ -28,12 +30,20 @@ class SearchResults extends Component {
   }
 
   getResultsMarkup() {
+    if (!this.props.searchResults) {
+      return <p>Loading...</p>;
+    }
+
+    if (this.props.searchResults.totalEntries === 0) {
+      return <p>Nothing found.</p>;
+    }
+
     const results = this.props.searchResults.results;
 
     if (results.artist) {
       return results.artist.map(artist => {
         return (
-          <div className="item" key={artist.id}>
+          <div className="item" key={uuidv1()}>
             <h2>{artist.displayName}</h2>
             <button
               type="button"
@@ -50,7 +60,7 @@ class SearchResults extends Component {
 
     return results.location.map(location => {
       return (
-        <div className="item" key={location.metroArea.id}>
+        <div className="item" key={uuidv1()}>
           <h2>{location.city.displayName}</h2>
           <p>
             {location.metroArea.displayName} -{' '}
@@ -76,7 +86,10 @@ class SearchResults extends Component {
   render() {
     return (
       <Fragment>
-        <h1>Search results for: {this.props.searchResults.activeQuery}</h1>
+        <h1>
+          Search results for:{' '}
+          {this.props.searchResults.activeQuery || '(empty search)'}
+        </h1>
         {this.getResultsMarkup()}
       </Fragment>
     );

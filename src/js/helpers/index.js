@@ -4,6 +4,10 @@ export const changePage = pathname => {
   history.push(pathname);
 };
 
+export const goBack = () => {
+  history.goBack();
+};
+
 export const searchfy = text => {
   return text
     .toString()
