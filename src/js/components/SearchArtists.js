@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
 import { searchfy } from '../helpers/index';
-
 import { search } from '../actions/search';
 
 // const mapStateToProps = state => {

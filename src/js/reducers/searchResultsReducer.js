@@ -4,7 +4,7 @@ export const initialState = {
   searchResults: false
 };
 
-export const reducer = (state = initialState, action) => {
+export const searchResultsReducer = (state = initialState, action) => {
   switch (action.type) {
     case SEARCH:
       return { ...state, searchResults: action.payload };
@@ -13,4 +13,4 @@ export const reducer = (state = initialState, action) => {
   }
 };
 
-export default reducer;
+// export default reducer;

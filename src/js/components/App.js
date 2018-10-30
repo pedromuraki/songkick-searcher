@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
 
 // import Header from './Header';
 import Search from './Search';
@@ -7,6 +8,12 @@ import Events from './Events';
 import EventDetails from './EventDetails';
 import Footer from './Footer';
 
+const mapStateToProps = state => {
+  return {
+    searchResults: state.searchResults
+  };
+};
+
 class App extends Component {
   render() {
     return (
@@ -14,7 +21,7 @@ class App extends Component {
         {/* <Header /> */}
         <button type="button">New search</button>
         <Search />
-        <SearchResults />
+        {this.props.searchResults.searchResults ? <SearchResults /> : null}
         <Events />
         <EventDetails />
         <Footer />
@@ -23,4 +30,6 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(mapStateToProps)(App);
+
+// export default App;

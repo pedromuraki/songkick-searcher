@@ -1,11 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
-import { searchfy } from '../helpers/index';
-
-import { search } from '../actions/search';
-
 import axios from 'axios';
+
+import { searchfy } from '../helpers/index';
+import { search } from '../actions/search';
 
 // const mapStateToProps = state => {
 //   return {
