@@ -2,6 +2,8 @@ import { SEARCH } from '../constants/action-types';
 
 import songkick from '../constants/songkick';
 
+import { searchfy } from '../helpers/index';
+
 export const search = (by, query) => {
   const optionalParams = {
     page: 1,
@@ -9,10 +11,11 @@ export const search = (by, query) => {
   };
 
   let req;
+  let searchfiedQuery = searchfy(query);
 
   if (by === 'artist') {
     req = songkick.searchArtists({
-      query,
+      query: searchfiedQuery,
       optionalParams
     });
   }
@@ -20,7 +23,7 @@ export const search = (by, query) => {
   if (by === 'location') {
     req = songkick.searchLocations({
       searchBy: {
-        query
+        query: searchfiedQuery
       },
       optionalParams
     });
@@ -30,7 +33,8 @@ export const search = (by, query) => {
     req.then(data => {
       dispatch({
         type: SEARCH,
-        payload: data
+        data,
+        query
       });
     });
   };

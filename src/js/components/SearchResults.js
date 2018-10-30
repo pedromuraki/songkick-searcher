@@ -51,7 +51,7 @@ class SearchResults extends Component {
   render() {
     return (
       <Fragment>
-        <h1>Search results for: search query</h1>
+        <h1>Search results for: {this.props.searchResults.activeQuery}</h1>
         {this.getResultsMarkup()}
       </Fragment>
     );

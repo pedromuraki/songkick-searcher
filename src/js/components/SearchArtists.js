@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
-import { searchfy } from '../helpers/index';
 import { search } from '../actions/search';
 
 // const mapStateToProps = state => {
@@ -32,7 +31,7 @@ class SearchArtists extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.search('artist', searchfy(this.state.inputValue));
+    this.props.search('artist', this.state.inputValue);
   }
 
   handleChange(e) {
@@ -63,5 +62,3 @@ export default connect(
   null,
   mapDispatchToProps
 )(SearchArtists);
-
-// export default SearchArtists;

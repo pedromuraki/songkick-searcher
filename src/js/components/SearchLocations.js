@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 import axios from 'axios';
 
-import { searchfy } from '../helpers/index';
 import { search } from '../actions/search';
 
 // const mapStateToProps = state => {
@@ -40,7 +39,7 @@ class SearchLocations extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.search('location', searchfy(this.state.inputValue));
+    this.props.search('location', this.state.inputValue);
   }
 
   handleChange(e) {
