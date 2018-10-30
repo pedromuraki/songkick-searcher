@@ -1,16 +1,11 @@
 import { combineReducers } from 'redux';
 
 import { searchResultsReducer } from './searchResultsReducer';
-// import * as currentTime from './currentTime';
+import { eventsReducer } from './eventsReducer';
 
 export const rootReducer = combineReducers({
-  searchResults: searchResultsReducer
-  // currentUser: currentUser.reducer,
+  searchResults: searchResultsReducer,
+  events: eventsReducer
 });
-
-// export const initialState = {
-//   searchResults: searchResults.initialState
-//   // currentUser: currentUser.initialState,
-// };
 
 export default rootReducer;

@@ -1,23 +1,30 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
+import { getEvents } from '../actions/getEvents';
+
 const mapStateToProps = state => {
   return {
     searchResults: state.searchResults
   };
 };
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     propName: param => {
-//       dispatch(propName(param));
-//     }
-//   };
-// };
+const mapDispatchToProps = dispatch => {
+  return {
+    getEvents: (from, displayName, id) =>
+      dispatch(getEvents(from, displayName, id))
+  };
+};
 
 class SearchResults extends Component {
   constructor(props) {
     super(props);
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(from, displayName, id) {
+    this.props.getEvents(from, displayName, id);
   }
 
   getResultsMarkup() {
@@ -28,7 +35,14 @@ class SearchResults extends Component {
         return (
           <div className="item" key={artist.id}>
             <h2>{artist.displayName}</h2>
-            <button type="button">See events</button>
+            <button
+              type="button"
+              onClick={() => {
+                this.handleClick('artists', artist.displayName, artist.id);
+              }}
+            >
+              See events
+            </button>
           </div>
         );
       });
@@ -42,7 +56,18 @@ class SearchResults extends Component {
             {location.metroArea.displayName} -{' '}
             {location.city.country.displayName}
           </p>
-          <button type="button">See events</button>
+          <button
+            type="button"
+            onClick={() => {
+              this.handleClick(
+                'metro_areas',
+                location.metroArea.displayName,
+                location.metroArea.id
+              );
+            }}
+          >
+            See events
+          </button>
         </div>
       );
     });
@@ -58,6 +83,7 @@ class SearchResults extends Component {
   }
 }
 
-export default connect(mapStateToProps)(SearchResults);
-
-// export default SearchResults;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SearchResults);

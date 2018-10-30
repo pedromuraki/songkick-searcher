@@ -10,7 +10,8 @@ import Footer from './Footer';
 
 const mapStateToProps = state => {
   return {
-    searchResults: state.searchResults
+    searchResults: state.searchResults,
+    events: state.events
   };
 };
 
@@ -22,7 +23,7 @@ class App extends Component {
         <button type="button">New search</button>
         <Search />
         {this.props.searchResults ? <SearchResults /> : null}
-        <Events />
+        {this.props.events ? <Events /> : null}
         <EventDetails />
         <Footer />
       </div>

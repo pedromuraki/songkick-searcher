@@ -13,14 +13,14 @@ export const search = (by, query) => {
   let req;
   let searchfiedQuery = searchfy(query);
 
-  if (by === 'artist') {
+  if (by === 'artists') {
     req = songkick.searchArtists({
       query: searchfiedQuery,
       optionalParams
     });
   }
 
-  if (by === 'location') {
+  if (by === 'locations') {
     req = songkick.searchLocations({
       searchBy: {
         query: searchfiedQuery
@@ -39,14 +39,3 @@ export const search = (by, query) => {
     });
   };
 };
-
-// export const someMiddleware = store => {
-//   return next => {
-//     return action => {
-//       console.log('middleware');
-//       console.log(action);
-//       console.log(action.payload);
-//       // next(action);
-//     };
-//   };
-// };

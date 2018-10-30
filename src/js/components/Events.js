@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
-// const mapStateToProps = state => {
-//   return {
-//     propName: state.prop
-//   };
-// };
+const mapStateToProps = state => {
+  return {
+    events: state.events
+  };
+};
 
 // const mapDispatchToProps = dispatch => {
 //   return {
@@ -21,38 +21,25 @@ class Events extends Component {
   }
 
   render() {
+    const events = this.props.events.results.event;
+
     return (
       <Fragment>
-        <h1>Search query: Next events</h1>
-        <div className="item">
-          <h2>Event name</h2>
-          <p>Some content</p>
-          <p>Some content</p>
-          <p>Some content</p>
-          <button type="button">More details</button>
-        </div>
-        <div className="item">
-          <h2>Event name</h2>
-          <p>Some content</p>
-          <p>Some content</p>
-          <p>Some content</p>
-          <button type="button">More details</button>
-        </div>
-        <div className="item">
-          <h2>Event name</h2>
-          <p>Some content</p>
-          <p>Some content</p>
-          <p>Some content</p>
-          <button type="button">More details</button>
-        </div>
+        <h1>{this.props.events.displayName}: Next events</h1>
+        {events.map(event => {
+          return (
+            <div className="item">
+              <h2>{event.displayName}</h2>
+              <p>{event.start.date}</p>
+              <p>{event.location.city}</p>
+              <p>{event.venue.displayName}</p>
+              <button type="button">More details</button>
+            </div>
+          );
+        })}
       </Fragment>
     );
   }
 }
 
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(Events);
-
-export default Events;
+export default connect(mapStateToProps)(Events);

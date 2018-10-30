@@ -13,9 +13,7 @@ import { search } from '../actions/search';
 
 const mapDispatchToProps = dispatch => {
   return {
-    search: (by, query) => {
-      dispatch(search(by, query));
-    }
+    search: (by, query) => dispatch(search(by, query))
   };
 };
 
@@ -39,7 +37,7 @@ class SearchLocations extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.search('location', this.state.inputValue);
+    this.props.search('locations', this.state.inputValue);
   }
 
   handleChange(e) {
@@ -70,5 +68,3 @@ export default connect(
   null,
   mapDispatchToProps
 )(SearchLocations);
-
-// export default SearchLocations;

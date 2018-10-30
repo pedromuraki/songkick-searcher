@@ -31,7 +31,7 @@ class SearchArtists extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.search('artist', this.state.inputValue);
+    this.props.search('artists', this.state.inputValue);
   }
 
   handleChange(e) {
