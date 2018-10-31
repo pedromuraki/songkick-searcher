@@ -55,7 +55,7 @@ class SearchLocations extends Component {
   render() {
     return (
       <div className="search-locations">
-        <h1>Find events in</h1>
+        <h1>Find events near</h1>
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"

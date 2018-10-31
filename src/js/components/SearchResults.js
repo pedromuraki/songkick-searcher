@@ -82,7 +82,7 @@ class SearchResults extends Component {
               );
             }}
           >
-            See events
+            See events nearby
           </button>
         </div>
       );

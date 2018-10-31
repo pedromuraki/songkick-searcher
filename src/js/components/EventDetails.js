@@ -21,6 +21,10 @@ class EventDetails extends Component {
   }
 
   render() {
+    if (!this.props.eventDetails) {
+      return <p>Loading...</p>;
+    }
+
     const event = this.props.eventDetails.results.event;
 
     return (

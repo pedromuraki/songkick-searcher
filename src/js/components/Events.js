@@ -1,7 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
+import { changePage } from '../helpers/index';
+
 import { getEventDetails } from '../actions/getEventDetails';
+import { clearEventDetails } from '../actions/clearEventDetails';
 
 import uuidv1 from 'uuid/v1';
 
@@ -13,7 +16,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getEventDetails: id => dispatch(getEventDetails(id))
+    getEventDetails: id => dispatch(getEventDetails(id)),
+    clearEventDetails: () => dispatch(clearEventDetails())
   };
 };
 
@@ -25,6 +29,8 @@ class Events extends Component {
   }
 
   handleClick(id) {
+    this.props.clearEventDetails();
+    changePage('/event-details');
     this.props.getEventDetails(id);
   }
 
