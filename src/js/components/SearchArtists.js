@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
-// import { changePage } from '../helpers/index';
+import { changePage } from '../helpers/index';
 
 import { search } from '../actions/search';
+import { clearResults } from '../actions/clearResults';
 
 // const mapStateToProps = state => {
 //   return {
@@ -13,9 +14,8 @@ import { search } from '../actions/search';
 
 const mapDispatchToProps = dispatch => {
   return {
-    search: (by, query) => {
-      dispatch(search(by, query));
-    }
+    search: (by, query) => dispatch(search(by, query)),
+    clearResults: () => dispatch(clearResults())
   };
 };
 
@@ -33,7 +33,8 @@ class SearchArtists extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    // changePage('/search-results');
+    this.props.clearResults();
+    changePage('/search-results');
     this.props.search('artists', this.state.inputValue);
   }
 

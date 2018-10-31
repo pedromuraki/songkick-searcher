@@ -1,7 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
+import { changePage } from '../helpers/index';
+
 import { getEvents } from '../actions/getEvents';
+import { clearEvents } from '../actions/clearEvents';
 
 import uuidv1 from 'uuid/v1';
 
@@ -14,7 +17,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getEvents: (from, displayName, id) =>
-      dispatch(getEvents(from, displayName, id))
+      dispatch(getEvents(from, displayName, id)),
+    clearEvents: () => dispatch(clearEvents())
   };
 };
 
@@ -26,6 +30,8 @@ class SearchResults extends Component {
   }
 
   handleClick(from, displayName, id) {
+    this.props.clearEvents();
+    changePage('/events');
     this.props.getEvents(from, displayName, id);
   }
 
@@ -86,10 +92,9 @@ class SearchResults extends Component {
   render() {
     return (
       <Fragment>
-        <h1>
-          Search results for:{' '}
-          {this.props.searchResults.activeQuery || '(empty search)'}
-        </h1>
+        {this.props.searchResults.activeQuery ? (
+          <h1>Search results for: {this.props.searchResults.activeQuery}</h1>
+        ) : null}
         {this.getResultsMarkup()}
       </Fragment>
     );

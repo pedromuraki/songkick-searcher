@@ -2,11 +2,9 @@ import { SEARCH } from '../constants/action-types';
 
 import songkick from '../constants/songkick';
 
-import { searchfy, changePage } from '../helpers/index';
+import { searchfy } from '../helpers/index';
 
 export const search = (by, query) => {
-  changePage('/search-results');
-
   const optionalParams = {
     page: 1,
     per_page: 50

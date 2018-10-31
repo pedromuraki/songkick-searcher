@@ -29,6 +29,14 @@ class Events extends Component {
   }
 
   render() {
+    if (!this.props.events) {
+      return <p>Loading...</p>;
+    }
+
+    if (this.props.events.totalEntries === 0) {
+      return <p>Nothing found.</p>;
+    }
+
     const events = this.props.events.results.event;
 
     return (

@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 
 import axios from 'axios';
 
-// import { changePage } from '../helpers/index';
+import { changePage } from '../helpers/index';
 
 import { search } from '../actions/search';
+import { clearResults } from '../actions/clearResults';
 
 // const mapStateToProps = state => {
 //   return {
@@ -15,7 +16,8 @@ import { search } from '../actions/search';
 
 const mapDispatchToProps = dispatch => {
   return {
-    search: (by, query) => dispatch(search(by, query))
+    search: (by, query) => dispatch(search(by, query)),
+    clearResults: () => dispatch(clearResults())
   };
 };
 
@@ -39,7 +41,8 @@ class SearchLocations extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    // changePage('/search-results');
+    this.props.clearResults();
+    changePage('/search-results');
     this.props.search('locations', this.state.inputValue);
   }
 
