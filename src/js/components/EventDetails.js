@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
+import Loading from './Loading';
+
 const mapStateToProps = state => {
   return {
     eventDetails: state.eventDetails
@@ -22,14 +24,14 @@ class EventDetails extends Component {
 
   render() {
     if (!this.props.eventDetails) {
-      return <p>Loading...</p>;
+      return <Loading />;
     }
 
     const event = this.props.eventDetails.results.event;
 
     return (
-      <Fragment>
-        <h1>{event.displayName}</h1>
+      <div className="item">
+        <h2>{event.displayName}</h2>
         <p>{event.location.city}</p>
         <p>
           {event.venue.displayName} - {event.venue.street}
@@ -37,10 +39,10 @@ class EventDetails extends Component {
         <p>
           {event.start.date} - {event.start.time}
         </p>
-        <a href={event.uri} target="_blank">
+        <a href={event.uri} target="_blank" className="button-small">
           Find tickets
         </a>
-      </Fragment>
+      </div>
     );
   }
 }

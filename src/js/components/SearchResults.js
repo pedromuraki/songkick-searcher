@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
+import Loading from './Loading';
+
 import { changePage } from '../helpers/index';
 
 import { getEvents } from '../actions/getEvents';
@@ -37,7 +39,7 @@ class SearchResults extends Component {
 
   getResultsMarkup() {
     if (!this.props.searchResults) {
-      return <p>Loading...</p>;
+      return <Loading />;
     }
 
     if (this.props.searchResults.totalEntries === 0) {
@@ -56,6 +58,7 @@ class SearchResults extends Component {
               onClick={() => {
                 this.handleClick('artists', artist.displayName, artist.id);
               }}
+              className="button-small"
             >
               See events
             </button>
@@ -81,6 +84,7 @@ class SearchResults extends Component {
                 location.metroArea.id
               );
             }}
+            className="button-small"
           >
             See events nearby
           </button>

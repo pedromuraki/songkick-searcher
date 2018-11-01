@@ -2,61 +2,18 @@
 @import 'node_modules/normalize.css/normalize';
 
 /* fonts */
-@import url('https://fonts.googleapis.com/css?family=Hind:400,700|Playfair+Display:400,700');
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,700');
 
-@mixin hind {
-  font-family: 'Hind', sans-serif;
+@mixin fira {
+  font-family: 'Fira Sans', sans-serif;
   letter-spacing: 1px;
   font-weight: 400;
 }
 
-@mixin hind-bold {
-  font-family: 'Hind', sans-serif;
+@mixin fira-bold {
+  font-family: 'Fira Sans', sans-serif;
   letter-spacing: 1px;
   font-weight: 700;
-}
-
-@mixin playfair {
-  font-family: 'Playfair Display', serif;
-  letter-spacing: 1px;
-  font-weight: 400;
-}
-
-@mixin playfair-bold {
-  font-family: 'Playfair Display', serif;
-  letter-spacing: 1px;
-  font-weight: 700;
-}
-
-/* fluid size mixin */
-@mixin fluid-size($props, $min-size, $max-size) {
-  $min-range: 320;
-  $max-range: 1280;
-  $rangeDiff: $max-range - $min-range;
-  $sizeDiff: $max-size - $min-size;
-  @each $prop in $props {
-    #{$prop}: calc(#{$min-size}px + #{$sizeDiff} * ((100vw - #{$min-range}px) / #{$rangeDiff}));
-    @media (max-width: #{$min-range}px) {
-      #{$prop}: #{$min-size}px;
-    }
-    @media (min-width: #{$max-range}px) {
-      #{$prop}: #{$max-size}px;
-    }
-  }
-}
-
-@mixin custom-range-fluid-size($props, $min-range, $max-range, $min-size, $max-size, $size-after-min-range, $size-after-max-range) {
-  $rangeDiff: $max-range - $min-range;
-  $sizeDiff: $max-size - $min-size;
-  @each $prop in $props {
-    #{$prop}: calc(#{$min-size}px + #{$sizeDiff} * ((100vw - #{$min-range}px) / #{$rangeDiff}));
-    @media (max-width: #{$min-range}px) {
-      #{$prop}: #{$size-after-min-range}px;
-    }
-    @media (min-width: #{$max-range}px) {
-      #{$prop}: #{$size-after-max-range}px;
-    }
-  }
 }
 
 /* helpers */
@@ -77,8 +34,7 @@
 }
 
 /* color variables */
-$cream: #fefefe;
-$salmon: #ea9e60;
+$pink: #f61253;
 
 /* global settings & resets */
 * {

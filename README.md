@@ -1,3 +1,6 @@
-- fazer todas as transições / colocar efeito de transição? (falta apenas a transição para detalhes do evento)
-- paginação de resultados
+- colocar efeito de transição? (a principio não)
+- colocar loading > criar componente
+- mais informações na página final de detalhes do evento
+- paginação de resultados / load more
+- verificar o que fazer quando usuario acessar alguma url de resultados diretamente sem fazer pesquisa
 - estilizar

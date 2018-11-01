@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
+import Loading from './Loading';
+
 import { changePage } from '../helpers/index';
 
 import { getEventDetails } from '../actions/getEventDetails';
@@ -36,7 +38,7 @@ class Events extends Component {
 
   render() {
     if (!this.props.events) {
-      return <p>Loading...</p>;
+      return <Loading />;
     }
 
     if (this.props.events.totalEntries === 0) {
@@ -47,7 +49,7 @@ class Events extends Component {
 
     return (
       <Fragment>
-        <h1>{this.props.events.displayName}: Next events</h1>
+        <h1>{this.props.events.displayName}: Upcoming events</h1>
         {events.map(event => {
           return (
             <div className="item" key={uuidv1()}>
@@ -60,6 +62,7 @@ class Events extends Component {
                 onClick={() => {
                   this.handleClick(event.id);
                 }}
+                className="button-small"
               >
                 More details
               </button>

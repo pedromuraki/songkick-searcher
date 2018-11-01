@@ -22,24 +22,27 @@ const mapStateToProps = state => {
 class App extends Component {
   render() {
     return (
-      <div className="app-wrapper">
+      <Fragment>
         {/* <Header /> */}
-        <button
-          type="button"
-          onClick={() => {
-            changePage('/');
-          }}
-        >
-          New search
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            goBack();
-          }}
-        >
-          Back
-        </button>
+        <div className="nav-buttons">
+          <button
+            type="button"
+            onClick={() => {
+              changePage('/');
+            }}
+          >
+            New search
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              goBack();
+            }}
+          >
+            {'< '}
+            Back
+          </button>
+        </div>
         <Switch>
           {/* <Search /> */}
           <Route exact path="/" component={Search} />
@@ -51,7 +54,7 @@ class App extends Component {
           <Route exact path="/event-details" component={EventDetails} />
         </Switch>
         <Footer />
-      </div>
+      </Fragment>
     );
   }
 }

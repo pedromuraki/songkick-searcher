@@ -1,0 +1,125 @@
+body {
+  @include fira;
+  background: #eee;
+  color: #222;
+  border-top: 5px solid $pink;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 50px 15px 100px 15px;
+}
+
+.app-wrapper {
+  width: 650px;
+  max-width: 100%;
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  button {
+    font-size: 16px;
+    color: $pink;
+    text-transform: uppercase;
+  }
+}
+
+.search-artists {
+  position: relative;
+  margin-bottom: 50px;
+  padding-bottom: 50px;
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 6px;
+    background: #ddd;
+    left: 0;
+    bottom: 0;
+  }
+}
+
+h1 {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.input-text {
+  background: #fff;
+  border: none;
+  border-radius: 10px;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0 15px;
+  width: calc(100% - 110px);
+  height: 50px;
+  line-height: 50px;
+  margin-right: 10px;
+  font-size: 16px;
+  &:focus {
+    outline: 0;
+    border: 3px solid $pink;
+  }
+}
+
+.button-big {
+  background: $pink;
+  color: #fff;
+  @include fira-bold;
+  text-transform: uppercase;
+  font-size: 16px;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  width: 100px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 10px;
+}
+
+.item {
+  background: #fff;
+  margin-bottom: 10px;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px #ccc;
+}
+
+h2 {
+  font-size: 16px;
+  margin-bottom: 3px;
+}
+
+p {
+  color: #888;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.button-small {
+  background: $pink;
+  color: #fff;
+  @include fira-bold;
+  text-transform: uppercase;
+  font-size: 12px;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 5px;
+  padding: 0 10px;
+}
+
+.footer {
+  background: $pink;
+  color: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 50px;
+  width: 100%;
+}

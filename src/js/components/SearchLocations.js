@@ -7,6 +7,7 @@ import { changePage } from '../helpers/index';
 
 import { search } from '../actions/search';
 import { clearResults } from '../actions/clearResults';
+import { changeSearchStatus } from '../actions/changeSearchStatus';
 
 // const mapStateToProps = state => {
 //   return {
@@ -17,7 +18,8 @@ import { clearResults } from '../actions/clearResults';
 const mapDispatchToProps = dispatch => {
   return {
     search: (by, query) => dispatch(search(by, query)),
-    clearResults: () => dispatch(clearResults())
+    clearResults: () => dispatch(clearResults()),
+    changeSearchStatus: bool => dispatch(changeSearchStatus(bool))
   };
 };
 
@@ -42,6 +44,7 @@ class SearchLocations extends Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.clearResults();
+    this.props.changeSearchStatus(true);
     changePage('/search-results');
     this.props.search('locations', this.state.inputValue);
   }
@@ -55,15 +58,18 @@ class SearchLocations extends Component {
   render() {
     return (
       <div className="search-locations">
-        <h1>Find events near</h1>
+        <h1>Find events near you</h1>
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
             placeholder="Type your city"
             onChange={this.handleChange}
             value={this.state.inputValue}
+            className="input-text"
           />
-          <button type="submit">Search</button>
+          <button type="submit" className="button-big">
+            Search
+          </button>
         </form>
       </div>
     );
