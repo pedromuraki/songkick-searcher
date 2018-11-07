@@ -66,6 +66,7 @@ class SearchLocations extends Component {
             onChange={this.handleChange}
             value={this.state.inputValue}
             className="input-text"
+            required
           />
           <button type="submit" className="button-big">
             Search
