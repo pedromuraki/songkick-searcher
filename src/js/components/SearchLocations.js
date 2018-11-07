@@ -29,11 +29,11 @@ class SearchLocations extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   axios.get('http://ip-api.com/json').then(data => {
-  //     this.setState({ inputValue: data.data.city });
-  //   });
-  // }
+  componentDidMount() {
+    axios.get('https://ipapi.co/json').then(data => {
+      this.setState({ inputValue: data.data.city });
+    });
+  }
 
   handleSubmit(e) {
     e.preventDefault();
