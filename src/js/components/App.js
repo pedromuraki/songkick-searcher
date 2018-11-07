@@ -4,7 +4,6 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 
 import { changePage, goBack } from '../helpers';
 
-// import Header from './Header';
 import Search from './Search';
 import SearchResults from './SearchResults';
 import Events from './Events';
@@ -23,7 +22,6 @@ class App extends Component {
   render() {
     return (
       <Fragment>
-        {/* <Header /> */}
         <div className="nav-buttons">
           <button
             type="button"
@@ -44,13 +42,9 @@ class App extends Component {
           </button>
         </div>
         <Switch>
-          {/* <Search /> */}
           <Route exact path="/" component={Search} />
-          {/* {this.props.searchResults ? <SearchResults /> : null} */}
           <Route exact path="/search-results" component={SearchResults} />
-          {/* {this.props.events ? <Events /> : null} */}
           <Route exact path="/events" component={Events} />
-          {/* {this.props.eventDetails ? <EventDetails /> : null} */}
           <Route exact path="/event-details" component={EventDetails} />
         </Switch>
         <Footer />

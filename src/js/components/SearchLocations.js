@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import axios from 'axios';
@@ -8,12 +8,6 @@ import { changePage } from '../helpers/index';
 import { search } from '../actions/search';
 import { clearResults } from '../actions/clearResults';
 import { changeSearchStatus } from '../actions/changeSearchStatus';
-
-// const mapStateToProps = state => {
-//   return {
-//     propName: state.prop
-//   };
-// };
 
 const mapDispatchToProps = dispatch => {
   return {
