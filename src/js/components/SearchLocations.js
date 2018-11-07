@@ -52,7 +52,7 @@ class SearchLocations extends Component {
   render() {
     return (
       <div className="search-locations">
-        <h1>Find events near you</h1>
+        <h1>Find concerts near you</h1>
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"

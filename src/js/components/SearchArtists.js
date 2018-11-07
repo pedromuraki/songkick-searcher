@@ -44,7 +44,7 @@ class SearchArtists extends Component {
   render() {
     return (
       <div className="search-artists">
-        <h1>Find events from your favorite artist</h1>
+        <h1>Find concerts from your favorite artist</h1>
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
