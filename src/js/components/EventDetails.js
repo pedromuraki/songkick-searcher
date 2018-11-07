@@ -9,17 +9,19 @@ const mapStateToProps = state => {
   };
 };
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     propName: param => {
-//       dispatch(propName(param));
-//     }
-//   };
-// };
-
 class EventDetails extends Component {
   constructor(props) {
     super(props);
+  }
+
+  getLineUp() {
+    const performance = this.props.eventDetails.results.event.performance;
+
+    return performance.map((artist, i) => {
+      return i === performance.length - 1
+        ? artist.displayName
+        : artist.displayName + ', ';
+    });
   }
 
   render() {
@@ -32,12 +34,25 @@ class EventDetails extends Component {
     return (
       <div className="item">
         <h2>{event.displayName}</h2>
-        <p>{event.location.city}</p>
         <p>
-          {event.venue.displayName} - {event.venue.street}
+          <strong>{event.location.city}</strong>
         </p>
         <p>
-          {event.start.date} - {event.start.time}
+          <strong>{event.venue.displayName}</strong>
+        </p>
+        <p>
+          <strong>Address:</strong> {event.venue.street}
+        </p>
+        <p>
+          <strong>Date:</strong> {event.start.date}
+        </p>
+        {event.start.time ? (
+          <p>
+            <strong>Starts at:</strong> {event.start.time}
+          </p>
+        ) : null}
+        <p>
+          <strong>Line up:</strong> {this.getLineUp()}
         </p>
         <a href={event.uri} target="_blank" className="button-small">
           Find tickets

@@ -1,6 +1,8 @@
 - colocar efeito de transição? (a principio não)
-- colocar loading > criar componente
-- mais informações na página final de detalhes do evento
+- colocar loading > criar componente (OK)
+- verificar o que fazer quando usuario acessar alguma url de resultados diretamente sem fazer pesquisa (OK)
+- mais informações na página final de detalhes do evento (OK)
+
 - paginação de resultados / load more
-- verificar o que fazer quando usuario acessar alguma url de resultados diretamente sem fazer pesquisa
+- impedir buscas com campo vazio
 - estilizar
